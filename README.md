@@ -1,7 +1,7 @@
 ## My notes on the course as I progress:
 The contents of the notes are mostly from the quizzes I finished.
-### Lesson 2: The Benefits of Offline First
 
+### Lesson 2: The Benefits of Offline First
 * 2.4 The reasons why users could not receive data from websites:
   * poor signal
   * misconfigured proxy
