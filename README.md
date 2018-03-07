@@ -25,9 +25,19 @@
    ```
   * open http://localhost:8888 for the website
   * open http://localhost:8889 to adjust the setting
-   
-   
 * 2.11 Change connection types
    * open http://localhost:8889, try switching the setting and put **demo** in Test ID
 * 2.12 Testing Lie Fi mode
    * open http://localhost:8889, try Lie-fi and put **lie-fi** in Test ID
+   
+### Lesson 3: Introducing the Service Worker
+3.2 Scoping - given the registration code below:
+   ```javascript
+   navigator.serviceWorker.register('/sw.js', {scope: '/foo/'});
+   ```
+   The page URLs that the service worker control are:
+   ```
+   /foo/
+   /foo/bar
+   /foo/bar/index.html
+   ```
