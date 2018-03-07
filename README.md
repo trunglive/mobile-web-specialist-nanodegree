@@ -25,9 +25,9 @@
    ```
    then open ```http://localhost:8888``` to see the site & ```http://localhost:8889``` to adjust the setting
 * 2.11 Change connection types
-  * open http://localhost:8889, try switching the setting and put **demo** in Test ID
+  * open ```http://localhost:8889```, try switching the setting and put **demo** in Test ID
 * 2.12 Testing Lie Fi mode
-  * open http://localhost:8889, try Lie-fi and put **lie-fi** in Test ID
+  * open ```http://localhost:8889```, try Lie-fi and put **lie-fi** in Test ID
    
 ### Lesson 3: Introducing the Service Worker
 3.2 Scoping - given the registration code below:
