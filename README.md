@@ -17,18 +17,17 @@
 * 2.6 Offline-first techniques
   * deliver the page's header & content from a cache, then fetch the updated content from the network
   * deliver the page's header from a cache, then fetch the content from the network
-2.8 & 2.9 Clone this repo & run on local machine to start working on the Wittr App
+* 2.8 & 2.9 Clone this repo & run on local machine to start working on the Wittr App
    ```
    git clone https://github.com/jakearchibald/wittr
    npm install
    npm run serve
    ```
-   open http://localhost:8888 for the website
-   open http://localhost:8889 to adjust the setting
+   then open ```http://localhost:8888``` to see the site & ```http://localhost:8889``` to adjust the setting
 * 2.11 Change connection types
-   * open http://localhost:8889, try switching the setting and put **demo** in Test ID
+  * open http://localhost:8889, try switching the setting and put **demo** in Test ID
 * 2.12 Testing Lie Fi mode
-   * open http://localhost:8889, try Lie-fi and put **lie-fi** in Test ID
+  * open http://localhost:8889, try Lie-fi and put **lie-fi** in Test ID
    
 ### Lesson 3: Introducing the Service Worker
 3.2 Scoping - given the registration code below:
