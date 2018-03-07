@@ -14,4 +14,7 @@ The contents of the notes are mostly from the quizzes I finished.
 * 2.5 The conditions in which the apps work well:
   * good connectivity
   * offline
+* 2.6 Offline-first techniques
+  * deliver the page's header & content from a cache, then fetch the updated content from the network
+  * deliver the page's header from a cache, then fetch the content from the network
   
