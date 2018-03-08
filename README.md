@@ -1,5 +1,5 @@
-## My notes on the course as I progress:
-> The content of the notes is mostly from the quizzes I finished.
+## :sparkles::sparkles: My notes on the course as I progress :sparkles::sparkles:
+> The content of the notes is mostly from the quizzes from the course.
 
 ### Lesson 2: The Benefits of Offline First
 * 2.4 The reasons why users could not receive data from websites:
@@ -40,3 +40,47 @@
    /foo/bar
    /foo/bar/index.html
    ```
+3.4 Register a Service Worker
+   ```
+   git reset --hard
+   git checkout task-register-sw
+   ```
+   + The service worker script is located at ```/public/js/sw/index.js```
+   + Register a service worker at ```/public/js/main/IndexController.js```
+   
+   ```javascript
+   IndexController.prototype._registerServiceWorker = function() {
+     // older browsers that do not support service worker
+     if (!navigator.serviceWorker) return;
+     
+     // browsers that support service worker
+     navigator.serviceWorker.register('/sw.js').then(function() {
+       console.log('Registration worked!');
+     }).catch(function() {
+       console.log('Registration failed!');
+     });
+   }
+   ```
+3.11 Hijacking Requests 1
+   ```
+   git reset --hard
+   git checkout task-custom-response
+   ```
+   
+   Change the service worker's response in ```/public/js/sw/index.js```
+   ```javascript
+   self.addEventListener('fetch', function(event) {
+  // respond to all requests with an html response
+  // containing an element with class="a-winner-is-me".
+
+  event.respondWith(
+    new Response('<p class="a-winner-is-me">Awesome!!</p>', {
+      headers: {
+        'Content-Type': 'text/html'
+      }
+    })
+  );
+  console.log(event.request);
+});
+   ```
+   
