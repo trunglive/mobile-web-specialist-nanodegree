@@ -69,8 +69,8 @@
    Change the service worker's response in ```/public/js/sw/index.js```
    ```javascript
    self.addEventListener('fetch', function(event) {
-  // respond to all requests with an html response
-  // containing an element with class="a-winner-is-me".
+   // respond to all requests with an html response
+   // containing an element with class="a-winner-is-me".
 
   event.respondWith(
     new Response('<p class="a-winner-is-me">Awesome!!</p>', {
@@ -80,8 +80,8 @@
     })
   );
   console.log(event.request);
-});
-   ```
+  });
+  ```
 3.13 Hijacking Requests 2
 ```
 git reset --hard
@@ -95,6 +95,6 @@ self.addEventListener('fetch', function(event) {
   }
 });
 ```
+3.15 Hijacking Requests 3
 
 
-   
