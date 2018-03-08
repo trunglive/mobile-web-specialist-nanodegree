@@ -83,18 +83,35 @@
   });
   ```
 3.13 Hijacking Requests 2
-```
-git reset --hard
-git checkout gif-response
-```
-Open ```/public/js/sw/index.js``` and intercept all requests ending with **.jpg** by an evil image
-```javascript
-self.addEventListener('fetch', function(event) {
-  if (event.request.url.endsWith('.jpg')) {
-    event.respondWith(fetch('/imgs/dr-evil.gif'));
-  }
-});
-```
+  ```
+  git reset --hard
+  git checkout gif-response
+  ```
+  Open ```/public/js/sw/index.js``` and intercept all requests ending with **.jpg** by an evil image
+  ```javascript
+  self.addEventListener('fetch', function(event) {
+    if (event.request.url.endsWith('.jpg')) {
+      event.respondWith(fetch('/imgs/dr-evil.gif'));
+    }
+  });
+  ```
 3.15 Hijacking Requests 3
-
-
+  ```
+  git reset --hard
+  git checkout error-handling
+  ```
+  Return dr-evil gif image for 404 errors
+  ```javascript
+  self.addEventListener('fetch', function(event) {
+    event.respondWith(
+      fetch(event.request).then(function(response) {
+        if (response.status === 404) {
+          return fetch('/imgs/dr-evil.gif');
+        }
+        return response;
+      }).catch(function() {
+        return new Response("Uh oh, that totally failed!");
+      })
+    );
+  });
+  ```
