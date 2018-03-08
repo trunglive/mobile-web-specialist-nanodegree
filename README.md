@@ -254,3 +254,22 @@
     }
   });
   ```
+3.26 Caching the Page Skeleton
+  ```
+  git reset --hard
+  git checkout task-page-skeleton
+  ```
+  From ```/public/js/sw/index.js```
+  ```javascript
+  // Cache the skeleton instead of the root page
+  // Line 38
+  var requestUrl = new URL(event.request.url);
+
+  if (requestUrl.origin === location.origin) {
+    if (requestUrl.pathname === '/') {
+      event.respondWith(caches.match('/skeleton'));
+      return;
+    }
+  }
+  ```
+ 
