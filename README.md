@@ -115,3 +115,46 @@
     );
   });
   ```
+3.17 Install and Cache
+  ```
+  git reset --hard
+
+  git checkout task-install
+  ```
+  Add cache from urlsToCache
+  ```javascript
+  self.addEventListener('install', function(event) {
+    var urlsToCache = [
+      '/',
+      'js/main.js',
+      'css/main.css',
+      'imgs/icon.png',
+      'https://fonts.gstatic.com/s/roboto/v15/2UX7WLTfW3W8TclTUvlFyQ.woff',
+      'https://fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOD8E0i7KZn-EPnyo3HZu7kw.woff'
+    ];
+
+    event.waitUntil(
+      caches.open('wittr-static-v1').then(function(cache) {
+        return cache.addAll(urlsToCache);
+      })
+    );
+  });
+  ```
+  
+3.18 Cache Response
+  ```
+  git reset --hard
+
+  git checkout task-cache-response
+  ```
+  Respond with an entry from the cache if there is one. If there isn't, fetch from the network.
+  ```javascript
+  self.addEventListener('fetch', function(event) {
+    event.respondWith(
+      caches.match(event.request).then(function(response) {
+        if (response) return response;
+        return fetch(event.request);
+      })
+    );
+  });
+  ```
