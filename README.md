@@ -1,5 +1,5 @@
 ## :sparkles::sparkles: My notes on the course as I progress :sparkles::sparkles:
-> The content of the notes is mostly from the quizzes from the course.
+> The content of the notes is mostly from the quizzes of the course.
 
 ### Lesson 2: The Benefits of Offline First
 * 2.4 The reasons why users could not receive data from websites:
@@ -14,7 +14,7 @@
 * 2.5 The conditions in which the apps work well:
   * good connectivity
   * offline
-* 2.6 Offline-first techniques
+* 2.6 Examples of Offline-first techniques
   * deliver the page's header & content from a cache, then fetch the updated content from the network
   * deliver the page's header from a cache, then fetch the content from the network
 * 2.8 & 2.9 Clone this repo & run on local machine to start working on the Wittr App
@@ -45,8 +45,8 @@
    git reset --hard
    git checkout task-register-sw
    ```
-   + The service worker script is located at ```/public/js/sw/index.js```
-   + Register a service worker at ```/public/js/main/IndexController.js```
+   - The service worker script is located at ```/public/js/sw/index.js```
+   - Register a service worker at ```/public/js/main/IndexController.js```
    
    ```javascript
    IndexController.prototype._registerServiceWorker = function() {
@@ -66,7 +66,6 @@
    git reset --hard
    git checkout task-custom-response
    ```
-   
    Change the service worker's response in ```/public/js/sw/index.js```
    ```javascript
    self.addEventListener('fetch', function(event) {
@@ -83,4 +82,19 @@
   console.log(event.request);
 });
    ```
+3.13 Hijacking Requests 2
+```
+git reset --hard
+git checkout gif-response
+```
+Open ```/public/js/sw/index.js``` and intercept all requests ending with **.jpg** by an evil image
+```javascript
+self.addEventListener('fetch', function(event) {
+  if (event.request.url.endsWith('.jpg')) {
+    event.respondWith(fetch('/imgs/dr-evil.gif'));
+  }
+});
+```
+
+
    
