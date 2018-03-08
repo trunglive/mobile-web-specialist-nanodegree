@@ -158,3 +158,24 @@
     );
   });
   ```
+  Remove old caches in scalable way
+  ```javascript
+  self.addEventListener('activate', function(event) {
+    event.waitUntil(
+      // TODO: remove the old cache
+      caches.keys().then(function(cacheNames) {
+        return Promise.all(
+          cacheNames
+            .filter(function(cacheName) {
+              return (
+                cacheName.startsWith('wittr-') && cacheName !== staticCacheName
+              );
+            })
+            .map(function(cacheName) {
+              return caches.delete(cacheName);
+            })
+        );
+      })
+    );
+  });
+  ```
