@@ -225,3 +225,32 @@
     });
   };
   ```
+3.25 Triggering an Update
+  ```
+  git reset --hard
+  git checkout task-update-reload
+  ```
+  From ```/public/js/main/IndexController.js```
+  ```javascript
+  // Line 41
+  navigator.serviceWorker.addEventListener('controllerchange', function() {
+    window.location.reload();
+  });
+  ```
+  ```javascript
+  // Line 57
+  toast.answer.then(function(answer) {
+    if (answer != 'refresh') return;
+     // Tell the service worker to skipWaiting
+    worker.postMessage({action: 'skipWaiting'});
+  });
+  ```
+  From ```/public/js/sw/index.js```
+  ```javascript
+  // Line 46
+  self.addEventListener('message', function(event) {
+    if (event.data.action == 'skipWaiting') {
+      self.skipWaiting();
+    }
+  });
+  ```
