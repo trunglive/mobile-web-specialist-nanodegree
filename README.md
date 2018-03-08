@@ -118,7 +118,6 @@
 3.17 Install and Cache
   ```
   git reset --hard
-
   git checkout task-install
   ```
   Add cache from urlsToCache
@@ -144,7 +143,6 @@
 3.18 Cache Response
   ```
   git reset --hard
-
   git checkout task-cache-response
   ```
   Respond with an entry from the cache if there is one. If there isn't, fetch from the network.
@@ -178,4 +176,52 @@
       })
     );
   });
+  ```
+3.23 Adding UX
+  ```
+  git reset --hard
+  git checkout task-update-notify
+  ```
+  ```javascript
+  IndexController.prototype._registerServiceWorker = function() {
+    if (!navigator.serviceWorker) return;
+
+    var indexController = this;
+
+    navigator.serviceWorker.register('/sw.js').then(function(reg) {
+      // If there's no controller, this page wasn't loaded
+      // via a service worker, so they're looking at the latest version.
+      // In that case, exit early
+      if (!navigator.serviceWorker.controller) return;
+      // If there's an updated worker already waiting, call
+      // indexController._updateReady()
+      if (reg.waiting) {
+        indexController._updateReady();
+        return;
+      }
+      // If there's an updated worker installing, track its
+      // progress. If it becomes "installed", call
+      // indexController._updateReady()
+      if (reg.installing) {
+        indexController._trackInstalling(reg.installing);
+        return;
+      }
+      // Otherwise, listen for new installing workers arriving.
+      // If one arrives, track its progress.
+      // If it becomes "installed", call
+      // indexController._updateReady()
+      reg.addEventListener('updatefound', function() {
+        indexController._trackInstalling(reg.installing);
+      });
+    });
+  };
+
+  IndexController.prototype._trackInstalling = function(worker) {
+    var indexController = this;
+    worker.addEventListener('statechange', function() {
+      if (worker.state == 'installed') {
+        indexController._updateReady();
+      }
+    });
+  };
   ```
