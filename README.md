@@ -272,4 +272,9 @@
     }
   }
   ```
- 
+  
+  ### Lesson 4: IndexedDB and Caching
+  4.4 More IDB
+  
+  
+  
