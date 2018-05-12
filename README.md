@@ -1,5 +1,5 @@
 ## :sparkles::sparkles: My notes on the course as I progress :sparkles::sparkles:
-> The content of the notes is mostly from the quizzes of the course.
+> The content of the notes is mostly from the quizzes I took. More content will be added as soon as I complete the section.
 
 ### Lesson 2: The Benefits of Offline First
 * 2.4 The reasons why users could not receive data from websites:
